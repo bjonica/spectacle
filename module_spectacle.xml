@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_spectacle" default="compile.module.spectacle">
+  <dirname property="module.spectacle.basedir" file="${ant.file.module_spectacle}"/>
+  
+  <property name="module.jdk.home.spectacle" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.spectacle" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.spectacle" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.spectacle" value="${compiler.args}"/>
+  
+  <property name="spectacle.output.dir" value="${module.spectacle.basedir}/out/production/spectacle"/>
+  <property name="spectacle.testoutput.dir" value="${module.spectacle.basedir}/out/test/spectacle"/>
+  
+  <path id="spectacle.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="spectacle.module.production.classpath">
+    <path refid="${module.jdk.classpath.spectacle}"/>
+    <path refid="library.libgdx.classpath"/>
+  </path>
+  
+  <path id="spectacle.runtime.production.module.classpath">
+    <pathelement location="${spectacle.output.dir}"/>
+    <path refid="library.libgdx.classpath"/>
+  </path>
+  
+  <path id="spectacle.module.classpath">
+    <path refid="${module.jdk.classpath.spectacle}"/>
+    <pathelement location="${spectacle.output.dir}"/>
+    <path refid="library.libgdx.classpath"/>
+  </path>
+  
+  <path id="spectacle.runtime.module.classpath">
+    <pathelement location="${spectacle.testoutput.dir}"/>
+    <pathelement location="${spectacle.output.dir}"/>
+    <path refid="library.libgdx.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.spectacle">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.spectacle">
+    <patternset refid="excluded.from.module.spectacle"/>
+  </patternset>
+  
+  <path id="spectacle.module.sourcepath">
+    <dirset dir="${module.spectacle.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.spectacle" depends="compile.module.spectacle.production,compile.module.spectacle.tests" description="Compile module spectacle"/>
+  
+  <target name="compile.module.spectacle.production" depends="register.custom.compilers" description="Compile module spectacle; production classes">
+    <mkdir dir="${spectacle.output.dir}"/>
+    <javac2 destdir="${spectacle.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.spectacle}/javac">
+      <compilerarg line="${compiler.args.spectacle}"/>
+      <bootclasspath refid="spectacle.module.bootclasspath"/>
+      <classpath refid="spectacle.module.production.classpath"/>
+      <src refid="spectacle.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.spectacle"/>
+    </javac2>
+    
+    <copy todir="${spectacle.output.dir}">
+      <fileset dir="${module.spectacle.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.spectacle.tests" depends="register.custom.compilers,compile.module.spectacle.production" description="compile module spectacle; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.spectacle" description="cleanup module">
+    <delete dir="${spectacle.output.dir}"/>
+    <delete dir="${spectacle.testoutput.dir}"/>
+  </target>
+</project>
