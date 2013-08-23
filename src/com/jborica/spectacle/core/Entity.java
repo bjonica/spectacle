@@ -1,6 +1,5 @@
 package com.jborica.spectacle.core;
 
-import com.jborica.spectacle.core.Component;
 import com.jborica.spectacle.util.ComponentMap;
 
 import java.util.UUID;

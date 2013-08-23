@@ -1,7 +1,7 @@
 package com.jborica.spectacle.systems;
 
 import com.badlogic.gdx.utils.ObjectMap;
-import com.jborica.spectacle.core.*;
+import com.jborica.spectacle.core.Entity;
 
 import java.util.UUID;
 

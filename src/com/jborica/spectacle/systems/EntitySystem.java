@@ -1,10 +1,9 @@
 package com.jborica.spectacle.systems;
 
-import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ObjectMap;
 import com.jborica.spectacle.components.PositionComponent;
 import com.jborica.spectacle.components.VelocityComponent;
-import com.jborica.spectacle.core.*;
+import com.jborica.spectacle.core.Entity;
 import com.jborica.spectacle.core.System;
 
 import java.util.UUID;
