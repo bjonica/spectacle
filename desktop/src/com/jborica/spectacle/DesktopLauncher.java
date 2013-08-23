@@ -17,6 +17,6 @@ public class DesktopLauncher {
         cfg.useGL20 = true;
         cfg.width = 1280;
         cfg.height = 720;
-        new LwjglApplication(new SpectacleGame(), cfg);
+        new LwjglApplication(new Spectacle(), cfg);
     }
 }
