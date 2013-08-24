@@ -10,4 +10,27 @@ import com.jborica.spectacle.core.Component;
  * To change this template use File | Settings | File Templates.
  */
 public class VelocityComponent extends Component {
+    private float speed;
+    private float radianDirection;
+
+    public VelocityComponent(float speed, float direction) {
+        this.speed = speed;
+        this.radianDirection = direction;
+    }
+
+    public float getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(float speed) {
+        this.speed = speed;
+    }
+
+    public float getRadianDirection() {
+        return radianDirection;
+    }
+
+    public void setRadianDirection(float radianDirection) {
+        this.radianDirection = radianDirection;
+    }
 }

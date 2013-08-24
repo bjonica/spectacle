@@ -1,5 +1,6 @@
 package com.jborica.spectacle.systems;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.ObjectMap;
 import com.jborica.spectacle.components.PositionComponent;
 import com.jborica.spectacle.components.VelocityComponent;
@@ -35,6 +36,7 @@ public class EntitySystem extends com.jborica.spectacle.core.System {
     }
 
     private static void addEntityToSystem(Entity entity, System system) {
+        Gdx.app.debug("DEBUG", "Adding entity " + entity.id.toString() + " to " + system.getClass().getSimpleName().toString());
         system.getEntityMap().put(entity.id, entity);
     }
 

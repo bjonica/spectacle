@@ -1,5 +1,6 @@
 package com.jborica.spectacle.core;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.ObjectMap;
 
 import java.util.UUID;
@@ -12,17 +13,19 @@ import java.util.UUID;
  * To change this template use File | Settings | File Templates.
  */
 public abstract class System {
-    private static boolean active = false;
+    private boolean active = false;
 
-    public static void activate() {
+    public void activate() {
+        Gdx.app.debug("DEBUG", "Activating " + this.getClass().getSimpleName().toString());
+
         active = true;
     }
 
-    public static void deactivate() {
+    public void deactivate() {
         active = false;
     }
 
-    public static boolean isActive() {
+    public boolean isActive() {
         return active;
     }
 

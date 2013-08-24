@@ -28,6 +28,10 @@ public class Entity {
         componentMap.remove(component.getClass());
     }
 
+    public Component getComponentOfType(Class<? extends Component> componentClass) {
+        return componentMap.get(componentClass);
+    }
+
     public boolean hasComponentOfType(Class<? extends Component> componentClass) {
         return componentMap.containsKey(componentClass);
     }
