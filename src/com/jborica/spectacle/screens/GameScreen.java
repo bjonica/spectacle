@@ -1,10 +1,8 @@
 package com.jborica.spectacle.screens;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.jborica.spectacle.PlayerManager;
 import com.jborica.spectacle.Spectacle;
-import com.jborica.spectacle.components.PositionComponent;
-import com.jborica.spectacle.components.VelocityComponent;
 import com.jborica.spectacle.core.Entity;
 import com.jborica.spectacle.systems.EntitySystem;
 import com.jborica.spectacle.systems.MovementSystem;
@@ -22,10 +20,6 @@ public class GameScreen implements Screen {
 
     public GameScreen(Spectacle game) {
         this.game = game;
-
-        player = new Entity();
-        player.addComponent(new PositionComponent(0f,0f,0.01f, 0.00f));
-        player.addComponent(new VelocityComponent(1.001f, 0.0f));
     }
 
     @Override
@@ -41,13 +35,14 @@ public class GameScreen implements Screen {
 
     @Override
     public void show() {
+        player = PlayerManager.getPlayer();
         MovementSystem.getInstance().activate();
         EntitySystem.addEntity(player);
     }
 
     @Override
     public void hide() {
-        //To change body of implemented methods use File | Settings | File Templates.
+        MovementSystem.getInstance().deactivate();
     }
 
     @Override
