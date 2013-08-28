@@ -13,13 +13,11 @@ public class PositionComponent extends Component {
     private float x;
     private float y;
     private float z;
-    private float direction;
 
-    public PositionComponent(float x, float y, float z, float direction) {
+    public PositionComponent(float x, float y, float z) {
         this.x = x;
         this.y = y;
         this.z = z;
-        this.direction = direction;
     }
 
     public final float getX() {
@@ -44,13 +42,5 @@ public class PositionComponent extends Component {
 
     public void setZ(float z) {
         this.z = z;
-    }
-
-    public float getDirection() {
-        return direction;
-    }
-
-    public void setDirection(float direction) {
-        this.direction = direction;
     }
 }
